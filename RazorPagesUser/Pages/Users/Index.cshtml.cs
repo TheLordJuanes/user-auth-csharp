@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using RazorPagesUser.Data;
 using RazorPagesUser.Models;
+using System.Web;
+
 
 namespace RazorPagesUser.Pages.Users
 {
@@ -35,6 +37,9 @@ namespace RazorPagesUser.Pages.Users
             if (!string.IsNullOrEmpty(SearchString))
             {
                 user = TotalUsers.Where(s => s.Username.Equals(SearchString));
+            }
+            else {
+                
             }
 
             User = await user.ToListAsync();
