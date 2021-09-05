@@ -19,11 +19,40 @@ namespace RazorPagesUser.Pages.Users
             _context = context;
         }
 
+        [BindProperty(SupportsGet = true)]
+        public string SearchString { get; set; }
+
+        [BindProperty(SupportsGet = true)]
+        public string Passwordp { get; set; }
+
         public IList<User> User { get;set; }
 
         public async Task OnGetAsync()
         {
-            User = await _context.User.ToListAsync();
+            var TotalUsers = from m in _context.User
+                             select m;
+            var user = TotalUsers;
+            if (!string.IsNullOrEmpty(SearchString))
+            {
+                user = TotalUsers.Where(s => s.Username.Equals(SearchString));
+            }
+
+            User = await user.ToListAsync();
+            if (User.Count == 1)
+            {
+                if (User.ElementAt(0).Password.Equals(Passwordp) && !string.IsNullOrEmpty(Passwordp))
+                {
+                    User = await TotalUsers.ToListAsync();
+                }
+                else
+                {
+                    Response.Redirect("../Index");
+                }
+            }
+            else
+            {
+                Response.Redirect("../Index");
+            }
         }
     }
 }

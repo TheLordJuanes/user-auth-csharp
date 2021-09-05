@@ -16,8 +16,6 @@ namespace RazorPagesUser.Pages.Users
 
         [BindProperty(SupportsGet = true)]
         public string ConfPassword { get; set; }
-        [BindProperty(SupportsGet = true)]
-        public string Password { get; set; }
 
         public CreateModel(RazorPagesUser.Data.RazorPagesUserContext context)
         {
@@ -40,9 +38,10 @@ namespace RazorPagesUser.Pages.Users
                 return Page();
             }
 
-            if (ConfPassword.Equals(Password)) {
+            if (ConfPassword.Equals(User.Password)) {
                 _context.User.Add(User);
                 await _context.SaveChangesAsync();
+                return RedirectToPage("../Index");
             }
             return RedirectToPage("Create");
         }

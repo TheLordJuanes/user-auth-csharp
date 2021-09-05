@@ -19,6 +19,10 @@ namespace RazorPagesUser.Pages
 
         [BindProperty(SupportsGet = true)]
         public string SearchString { get; set; }
+
+        [BindProperty(SupportsGet = true)]
+        public string Passwordp { get; set; }
+
         public void OnGet()
         {
 
