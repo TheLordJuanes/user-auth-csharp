@@ -21,14 +21,14 @@
                 <span asp-validation-for="User.Username" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="User.Password" class="control-label"></label>
-                <input asp-for="User.Password" class="form-control" />
-                <span asp-validation-for="User.Password" class="text-danger"></span>
+                <label asp-for="Password" class="control-label"></label>
+                <input asp-for="Password" class="form-control" id="passw" />
+                <span asp-validation-for="Password" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label>Confirm Password</label>
-                <input asp-for="User.Password" class="form-control" />
-                <span asp-validation-for="User.Password" class="text-danger"></span>
+                <input asp-for="ConfPassword" class="form-control" id="conf-passw" />
+                <span class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="User.BirthDate" class="control-label"></label>
@@ -46,7 +46,7 @@
                 <span asp-validation-for="User.LastName" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+                <input type="submit" value="Save" class="btn btn-primary" onclick="checkPassword()" />
             </div>
         </form>
     </div>
@@ -57,4 +57,20 @@
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+<script>
+    function checkPassword() {
+        let password = document.getElementById("passw").value;
+        let cnfrmPassword = document.getElementById("conf-passw").value;
+        if (password.length != 0) {
+            if (password == cnfrmPassword) {
+                alert("Password match!");
+            } else {
+                alert("Password don't match!");
+            }
+        } else {
+            alert("Password can't be empty!");
+        }
+    }
+</script>
 }

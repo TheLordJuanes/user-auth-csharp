@@ -14,6 +14,11 @@ namespace RazorPagesUser.Pages.Users
     {
         private readonly RazorPagesUser.Data.RazorPagesUserContext _context;
 
+        [BindProperty(SupportsGet = true)]
+        public string ConfPassword { get; set; }
+        [BindProperty(SupportsGet = true)]
+        public string Password { get; set; }
+
         public CreateModel(RazorPagesUser.Data.RazorPagesUserContext context)
         {
             _context = context;
@@ -35,10 +40,11 @@ namespace RazorPagesUser.Pages.Users
                 return Page();
             }
 
-            _context.User.Add(User);
-            await _context.SaveChangesAsync();
-
-            return RedirectToPage("./Index");
+            if (ConfPassword.Equals(Password)) {
+                _context.User.Add(User);
+                await _context.SaveChangesAsync();
+            }
+            return RedirectToPage("Create");
         }
     }
 }
