@@ -6,7 +6,7 @@
 }
 
 <div class="text-center">
-    <h1 class="display-4">RPC :: Red de Programación Competitiva</h1>
+    <h1 class="display-4">RPC :: Red de Programaci?n Competitiva</h1>
 </div>
 
 <table class="table">
@@ -24,7 +24,6 @@
             <th>
                 @Html.DisplayNameFor(model => model.User[0].BirthDate)
             </th>
-            <th></th>
         </tr>
     </thead>
     <tbody>
@@ -43,13 +42,7 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.BirthDate)
                 </td>
-                <td>
-                    <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
-                    <a asp-page="./Details" asp-route-id="@item.ID">Details</a> |
-                    <a asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
-                </td>
             </tr>
         }
     </tbody>
 </table>
-

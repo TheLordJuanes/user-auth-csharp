@@ -1,9 +1,7 @@
 @page
 @model RazorPagesUser.Pages.Users.CreateModel
 
-@{
-    ViewData["Title"] = "Create";
-}
+@{ ViewData["Title"] = "Create"; }
 
 <div class="text-center">
     <h1 class="display-4">RPC :: Red de Programación Competitiva</h1>
@@ -58,19 +56,13 @@
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 
-<script>
-    function checkPassword() {
-        let password = document.getElementById("passw").value;
-        let cnfrmPassword = document.getElementById("conf-passw").value;
-        if (password.length != 0) {
-            if (password == cnfrmPassword) {
-                alert("Password match!");
-            } else {
-                alert("Password don't match!");
-            }
-        } else {
-            alert("Password can't be empty!");
-        }
-    }
-</script>
+    <script>function checkPassword() {
+            let password = document.getElementById("passw").value;
+            let cnfrmPassword = document.getElementById("conf-passw").value;
+            if (cnfrmPassword.length != 0) {
+                if (password != cnfrmPassword)
+                    alert("Password don't match!");
+            } else
+                alert("Password can't be empty!");
+        }</script>
 }

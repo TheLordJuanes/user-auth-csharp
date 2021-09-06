@@ -1,13 +1,10 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
-using RazorPagesUser.Data;
 using RazorPagesUser.Models;
-using System.Web;
 
 
 namespace RazorPagesUser.Pages.Users
@@ -27,7 +24,7 @@ namespace RazorPagesUser.Pages.Users
         [BindProperty(SupportsGet = true)]
         public string Passwordp { get; set; }
 
-        public IList<User> User { get;set; }
+        public new IList<User> User { get;set; }
 
         public async Task OnGetAsync()
         {
