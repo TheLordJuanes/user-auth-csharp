@@ -5,9 +5,18 @@
     ViewData["Title"] = "Index";
 }
 
+
+<script type="text/javascript">
+    window.onload = function () {
+        document.getElementById("username").innerHTML = "@ViewData["Message"]";
+        };
+</script>
+
+
 <div class="text-center">
     <h1 class="display-4">RPC :: Red de Programaci?n Competitiva</h1>
     <a asp-page="Index">Logout</a>
+    <p id="username"></p>
 </div>
 
 <table class="table">

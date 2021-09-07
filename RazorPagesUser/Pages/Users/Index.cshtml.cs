@@ -35,15 +35,12 @@ namespace RazorPagesUser.Pages.Users
             {
                 user = TotalUsers.Where(s => s.Username.Equals(SearchString));
             }
-            else {
-                
-            }
-
             User = await user.ToListAsync();
             if (User.Count == 1)
             {
                 if (User.ElementAt(0).Password.Equals(Passwordp) && !string.IsNullOrEmpty(Passwordp))
                 {
+                    ViewData["Message"] = User.ElementAt(0).Username;
                     User = await TotalUsers.ToListAsync();
                 }
                 else
